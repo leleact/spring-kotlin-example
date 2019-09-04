@@ -34,7 +34,7 @@ class SpringKotlinExampleApplicationTests {
 
     @Test
     fun loginTest() {
-        val request = UserLoginData("x", "abc@xzy.com", "password")
+        val request = UserLoginData("x y", "abc@xzy.com", "password")
         val result = mockMvc.perform(post("/login").content(mapper.writeValueAsString(request)).contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(status().isOk).andReturn().response.contentAsString
         log.info("result: {}", result)
     }
@@ -42,6 +42,13 @@ class SpringKotlinExampleApplicationTests {
     @Test
     fun `Anonymous function test`() {
         log.info("log a anonymous function test")
+    }
+
+    @Test
+    fun `property getter and setter`() {
+        val user = UserLoginData("x y", "abc@xzy.com", "password")
+        user.fullName = "a b"
+        log.info("first name: {}, last name: {}, full name: {}", user.firstName, user.lastName, user.fullName)
     }
 
 }
