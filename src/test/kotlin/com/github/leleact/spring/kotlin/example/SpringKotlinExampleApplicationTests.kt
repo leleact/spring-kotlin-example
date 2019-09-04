@@ -39,4 +39,9 @@ class SpringKotlinExampleApplicationTests {
         log.info("result: {}", result)
     }
 
+    @Test
+    fun `Anonymous function test`() {
+        log.info("log a anonymous function test")
+    }
+
 }
