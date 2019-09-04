@@ -46,8 +46,10 @@ class SpringKotlinExampleApplicationTests {
 
     @Test
     fun `property getter and setter`() {
-        val user = UserLoginData("x y", "abc@xzy.com", "password")
-        user.fullName = "a b"
+        val user = UserLoginData("x y", "abc@xzy.com", "password").apply {
+            this.fullName = "a b"
+            log.info("xx {}", this)
+        }
         log.info("first name: {}, last name: {}, full name: {}", user.firstName, user.lastName, user.fullName)
     }
 
